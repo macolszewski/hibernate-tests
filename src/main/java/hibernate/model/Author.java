@@ -6,13 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "author_new")
-public class Author {
-
-    @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    @Column( name = "author_id")
-    private String id;
+@AttributeOverride(name = "id", column = @Column(name="author_id"))
+public class Author extends BaseEntitiy{
 
     @Embedded
     @AttributeOverrides({@AttributeOverride(name = "name",column = @Column(name="imie")),
@@ -30,6 +25,13 @@ public class Author {
 
 
     public Author() {
+    }
+
+    public Author(Human human, String gatunek, String pseudonim_literacki, String nagrody) {
+        this.human = human;
+        this.gatunek = gatunek;
+        this.pseudonim_literacki = pseudonim_literacki;
+        this.nagrody = nagrody;
     }
 
     public Human getHuman() {

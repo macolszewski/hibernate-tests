@@ -1,6 +1,8 @@
 package hibernate;
 
+import hibernate.model.Author;
 import hibernate.model.Book;
+import hibernate.model.Human;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -13,22 +15,23 @@ public class App
 
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        //Book book = new Book();
+        Book book = new Book("Koń Rafał","1923","Bajka");
+        Book book2 = new Book("Koń Rafał II","1925","Bajka");
+        BookService bookService = new BookService(sessionFactory);
+        bookService.addBook(book);
+        bookService.addBook(book2);
 
-/*        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
-                .build();
-        try {
-            SessionFactory sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-        }
-        catch (Exception e) {
-            // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
-            // so destroy it manually.
-            StandardServiceRegistryBuilder.destroy( registry );
-        }*/
-        //sessionFactory.close();
+        Author author = new Author(new Human("Andrzej","Lęgarek"),
+                "Bajka","Lęgar"," ");
+        Author author2 = new Author(new Human("Robert","Roger"),
+                "Thriller"," "," ");
+
+        AuthorService authorService = new AuthorService(sessionFactory);
+        authorService.addAuthor(author);
+        authorService.addAuthor(author2);
 
 
+        sessionFactory.close();
 
 
     }

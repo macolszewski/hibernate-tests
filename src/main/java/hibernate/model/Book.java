@@ -6,13 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "book_new")
-public class Book {
-
-    @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy="uuid")
-    @Column(name="book_id")
-    private String id;
+@AttributeOverride(name = "id", column = @Column(name="book_id"))
+public class Book extends BaseEntitiy {
 
     @Column(name="book_title")
     private String title;
@@ -26,12 +21,10 @@ public class Book {
     public Book() {
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Book(String title, String yearOfRelease, String bookType) {
+        this.title = title;
+        this.yearOfRelease = yearOfRelease;
+        this.bookType = bookType;
     }
 
     public String getTitle() {
