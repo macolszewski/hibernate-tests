@@ -30,6 +30,8 @@ public class App
         authorService.getAuthors();
 
         bookService.updateBook("ff80818166baf7340166baf736a90000","Zły tytuł");
+//        authorService.updateAuthor("ff80818166baf7340166baf736d10003",new Human("Zygfyd","Naukowski"));
+        authorService.deleteAuthor("ff80818166baf7340166baf736d10003");
 
         sessionFactory.close();
 

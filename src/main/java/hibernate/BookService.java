@@ -69,4 +69,21 @@ public class BookService {
         }
 
     }
+
+    public void deleteBook(String ID) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Book book = (Book)session.get(Book.class, ID);
+            session.delete(book);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+    }
 }

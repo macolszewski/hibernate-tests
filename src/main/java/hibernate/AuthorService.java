@@ -70,4 +70,20 @@ public class AuthorService {
         }
 
     }
+    public void deleteAuthor(String ID) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Author author = (Author) session.get(Author.class, ID);
+            session.delete(author);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+    }
 }
