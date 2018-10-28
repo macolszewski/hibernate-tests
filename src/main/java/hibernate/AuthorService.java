@@ -2,6 +2,7 @@ package hibernate;
 
 import hibernate.model.Author;
 import hibernate.model.Book;
+import hibernate.model.Human;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -50,5 +51,23 @@ public class AuthorService {
         } finally {
             session.close();
         }
+    }
+
+    public void updateAuthor(String ID, Human human) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Author author = (Author) session.get(Author.class, ID);
+            author.setHuman(human);
+            session.update(author);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
     }
 }
