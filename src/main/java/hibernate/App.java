@@ -13,7 +13,6 @@ public class App
 {
     public static void main( String[] args ) {
 
-
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Book book = new Book("Koń Rafał","1923","Bajka");
         Book book2 = new Book("Koń Rafał II","1925","Bajka");
@@ -30,9 +29,10 @@ public class App
         authorService.addAuthor(author);
         authorService.addAuthor(author2);
 
+        bookService.getBooks();
+        authorService.getAuthors();
 
         sessionFactory.close();
-
 
     }
 }

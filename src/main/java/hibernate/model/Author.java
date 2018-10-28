@@ -65,4 +65,14 @@ public class Author extends BaseEntitiy{
     public void setNagrody(String nagrody) {
         this.nagrody = nagrody;
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "human=" + human +
+                ", gatunek='" + gatunek + '\'' +
+                ", pseudonim_literacki='" + pseudonim_literacki + '\'' +
+                ", nagrody='" + nagrody + '\'' +
+                "} " + super.toString();
+    }
 }

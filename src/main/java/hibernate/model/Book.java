@@ -50,4 +50,13 @@ public class Book extends BaseEntitiy {
     public void setBookType(String bookType) {
         this.bookType = bookType;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", yearOfRelease='" + yearOfRelease + '\'' +
+                ", bookType='" + bookType + '\'' +
+                "} " + super.toString();
+    }
 }
