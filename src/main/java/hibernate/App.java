@@ -46,15 +46,13 @@ public class App
 
         Project project = new Project();
         project.setName("Robo-Cop");
-        project.setEmployee(zbigniew);
-        Project project_zlom = new Project();
-        project_zlom.setName("Robo-złom");
-        project_zlom.setEmployee(zbigniew);
+        project.setEmployee(janusz);
         Project project1 = new Project();
         project1.setName("Złoo");
         project1.setEmployee(zbigniew);
-        project.setEmployee(janusz);
-//        janusz.getProjects().add(project);
+        Project project_zlom = new Project();
+        project_zlom.setName("Robo-złom");
+        project_zlom.setEmployee(zbigniew);
 
         DepartamentService departamentService = new DepartamentService(sessionFactory);
         EmployeeService employeeService = new EmployeeService(sessionFactory);
@@ -66,10 +64,10 @@ public class App
         projectService.addProject(project);
         projectService.addProject(project1);
         projectService.addProject(project_zlom);
-        employeeService.updateEmployee(4,project);
-        employeeService.updateEmployee(4,project_zlom);
-        employeeService.updateEmployee(3,project1);
 
+//        employeeService.updateEmployee(4,project);
+//        employeeService.updateEmployee(4,project_zlom);
+//        employeeService.updateEmployee(3,project1);
 
         employeeService.getEmployees();
         departamentService.getDepartaments();

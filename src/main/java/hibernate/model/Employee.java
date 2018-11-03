@@ -17,9 +17,9 @@ public class Employee {
     private String name;
     private String lastname;
     private String position;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Departament departament;
-    @OneToMany
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Project> projects = new ArrayList<>();
 
     public Employee() {
